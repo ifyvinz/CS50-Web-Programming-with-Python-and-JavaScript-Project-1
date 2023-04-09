@@ -1,0 +1,23 @@
+{% extends "encyclopedia/layout.html"%}
+
+{% block title %}
+   Create a new page
+{% endblock %}
+
+{% block body %}
+   {%if errorMessage %}
+       <div class="alert alert-danger" role="alert">
+           {{errorMessage}}
+       </div><!--  danger error div ends -->
+   {%endif%}
+
+<br>
+
+<div class="form-group">
+     <form action="{% url 'createEntry' %}", method="post">
+           {% csrf_token %}
+           {{ form }}<!-- form.as_p the "as_p" simply wraps all the elements in HTML <p> tags.  -->
+           <input type="submit" class="btn btn-light">
+     </form>
+</div><!-- form-group end of div -->
+{% endblock %}
